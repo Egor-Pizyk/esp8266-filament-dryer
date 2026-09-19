@@ -31,20 +31,8 @@ void loop() {
     float temperature;
     float humidity;
     readAht20(temperature, humidity);
-
-    Serial.print("AHT20 Temperature: ");
-    Serial.print(temperature);
-    Serial.println(" °C");
-
-    Serial.print("AHT20 Humidity: ");
-    Serial.print(humidity);
-    Serial.println(" %");
-
+    Serial.printf("AHT20: temp=%.2f C, humidity=%.2f %%\n", temperature, humidity);
     float thermistorTemperature = readThermistor();
-    Serial.print("Thermistor Temperature: ");
-    Serial.print(thermistorTemperature);
-    Serial.println(" °C");
-
     updateFan(thermistorTemperature);
 
     if (temperature < 45.0) {
